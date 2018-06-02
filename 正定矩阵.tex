@@ -1,0 +1,73 @@
+\documentclass{article}
+\usepackage[space]{ctex}
+\usepackage{amsmath}
+\usepackage[CJKbookmarks]{hyperref}
+\hypersetup{
+colorlinks=true,
+linkcolor=black
+} %解决目录红框的问题
+\renewcommand{\contentsname}{\centerline{目录}}
+\title{Positive-definite and positive semi-definite matrix}
+\date{}
+\begin{document}
+\maketitle
+\section{Notations}
+\begin{itemize}
+    \item the conjugate transpose of matrix A is denoted as $A^H$
+    \item the transpose of matrix A is denoted as $A^T$
+    \item the conjugate of matrix A is denoted as $A^*$
+\end{itemize}
+\section{Definition}
+    \subsection{Hermitian matrix}
+        In mathematics, a Hermitian matrix (or self-adjoint matrix) is a complex square matrix that is equal to its own conjugate transpose—that is, the element in the i-th row and j-th column is equal to the complex conjugate of the element in the j-th row and i-th column, for all indices i and j: \newline
+        $A = A^H$ \newline
+        Hermitian matrices can be understood as the complex extension of real symmetric matrices. \newline
+       
+\section{properties}
+    \begin{itemize}
+        \item  a Hermitian matrix's diagonal elements must be real, as they must be their own complex conjugate
+        \item  if a square matrix A equals the multiplication of a matrix and its conjugate transpose, that is, $A = BB^H$, then A is a Hermitian positive semi-definite matrix.Furthermore, if B is row full-rank, then A is positive definite.
+        \item for an arbitrary complex valued vector v the product $v^HAv$ is real because of $v^HAv = (v^HAv)^H$
+    \end{itemize}
+\section{How to judge a positive-definite matrix}
+    \begin{itemize}
+        \item a matrix is positive definite if it's symmetric and all its pivots are positive. Just perform elimination and examine the diagonal terms.
+            \begin{gather*}
+                \begin{pmatrix}
+                    1 & 2 \\
+                    2 & 1
+                \end{pmatrix}
+            \end{gather*}
+            after performing the elimination:
+            \begin{gather*}
+                \begin{pmatrix}
+                    1 & 2 \\
+                    0 & -3
+                \end{pmatrix}
+            \end{gather*}
+            the pivots are 1 and -3. -3 is not positive, so the matrix is not positive definite matrix.
+        \item the k-th pivot of a matrix is $d_k = \frac{det(A_k)}{det(A_{k-1})}$ where $A_k$ is the upper left kxk submatrix. All the pivots will be positive if and only if $det(A_k) \geq 0$  for all $1 \leq k \leq  n$
+            \begin{gather*}
+                \begin{pmatrix}
+                    2 & -1 & 0 \\
+                    -1 & 2 & -1 \\
+                    0 & -1 & 2
+                \end{pmatrix}
+            \end{gather*}
+            \begin{gather*}
+                \begin{vmatrix}
+                    2
+                \end{vmatrix} = 2,
+                \begin{vmatrix}
+                    2 & -1 \\
+                    -1 & 2
+                \end{vmatrix} = 3,
+                \begin{vmatrix}
+                    2 & -1 & 0 \\
+                    -1 & 2 & -1 \\
+                    0 & -1 & 2
+                \end{vmatrix} = 4
+            \end{gather*}
+            $2, 3, 4 \geq 0$ so the matrix is the positive definite matrix
+    \end{itemize}
+\end{document} 
